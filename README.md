@@ -226,7 +226,7 @@ curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scri
 
 2. Clone this repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/hermes-multiagent.git
+git clone https://github.com/anibalardid/opencode-hermes-multiagent.git
 cd hermes-multiagent
 ```
 
@@ -262,7 +262,7 @@ brew install anomalyco/tap/opencode
 
 2. Clone this repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/hermes-multiagent.git
+git clone https://github.com/anibalardid/opencode-hermes-multiagent.git
 cd hermes-multiagent
 ```
 
