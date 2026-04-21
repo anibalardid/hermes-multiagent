@@ -1,0 +1,16 @@
+{
+  "name": "hermes-multiagent",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Hermes multi-agent orchestration system — 17 specialized AI agents using Ollama Cloud models, compatible with Hermes Agent and OpenCode AI",
+  "scripts": {
+    "typecheck": "bun run --bun tsc --noEmit"
+  },
+  "dependencies": {
+    "@opencode-ai/plugin": "1.0.218"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/bun": "latest"
+  }
+}

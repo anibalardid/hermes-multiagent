@@ -1,0 +1,350 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "hermes",
+  "agent": {
+    "hermes": {
+      "description": "Master orchestrator agent. Analyzes requests, researches project context, decomposes tasks, and delegates to specialized subagents.",
+      "mode": "primary",
+      "model": "ollama/kimi-k2.6:cloud",
+      "tools": {
+        "task": true,
+        "bash": false,
+        "read": false,
+        "write": false,
+        "edit": false,
+        "list": false,
+        "glob": false,
+        "grep": false,
+        "webfetch": false,
+        "todowrite": true,
+        "todoread": true
+      }
+    },
+    "finder": {
+      "description": "Fast codebase scout. Finds files, code, and patterns on request.",
+      "mode": "subagent",
+      "model": "ollama/gemma4:31b-cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": false,
+        "edit": false,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": false
+      }
+    },
+    "analyst": {
+      "description": "Deep code analyst. Understands how code works, traces dependencies, identifies risks and side effects.",
+      "mode": "subagent",
+      "model": "ollama/deepseek-v3.2:cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": false,
+        "edit": false,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": false
+      }
+    },
+    "researcher": {
+      "description": "External knowledge researcher. Searches web, documentation, and best practices for solutions.",
+      "mode": "subagent",
+      "model": "ollama/cogito-2.1:671b-cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": false,
+        "edit": false,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "webfetch": true,
+        "todowrite": false,
+        "todoread": false
+      }
+    },
+    "architect": {
+      "description": "Solution architect. Designs system structure, components, interfaces, and integration points.",
+      "mode": "subagent",
+      "model": "ollama/kimi-k2-thinking:cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": false,
+        "edit": false,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": false
+      }
+    },
+    "planner": {
+      "description": "Task decomposer. Breaks down architectural designs into atomic, executable tasks.",
+      "mode": "subagent",
+      "model": "ollama/gemma4:31b-cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": false,
+        "edit": false,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "webfetch": false,
+        "todowrite": true,
+        "todoread": true
+      }
+    },
+    "coder": {
+      "description": "Code writer. Creates new files, functions, classes based on design and task specifications.",
+      "mode": "subagent",
+      "model": "ollama/glm-5.1:cloud",
+      "tools": {
+        "task": false,
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "editor": {
+      "description": "Code editor. Modifies existing files, adds features to existing code, integrates components.",
+      "mode": "subagent",
+      "model": "ollama/qwen3-coder-next:cloud",
+      "tools": {
+        "task": false,
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "fixer": {
+      "description": "Bug fixer. Fixes bugs with minimal changes based on debugger diagnosis or error reports.",
+      "mode": "subagent",
+      "model": "ollama/deepseek-v3.2:cloud",
+      "tools": {
+        "task": false,
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "refactorer": {
+      "description": "Code refactorer. Improves code structure without changing behavior.",
+      "mode": "subagent",
+      "model": "ollama/deepseek-v3.2:cloud",
+      "tools": {
+        "task": false,
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "reviewer": {
+      "description": "Code reviewer. Reviews code changes for quality, best practices, and potential issues.",
+      "mode": "subagent",
+      "model": "ollama/kimi-k2.6:cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": false,
+        "edit": false,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "tester": {
+      "description": "Test engineer. Writes and runs tests to verify code correctness and coverage.",
+      "mode": "subagent",
+      "model": "ollama/qwen3-coder-next:cloud",
+      "tools": {
+        "task": false,
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "debugger": {
+      "description": "Bug investigator. Finds root cause of bugs through systematic analysis and tracing.",
+      "mode": "subagent",
+      "model": "ollama/cogito-2.1:671b-cloud",
+      "tools": {
+        "task": false,
+        "bash": true,
+        "read": true,
+        "write": false,
+        "edit": false,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "security": {
+      "description": "Security auditor. Audits code for vulnerabilities, security best practices, and compliance.",
+      "mode": "subagent",
+      "model": "ollama/kimi-k2.5:cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": false,
+        "edit": false,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "documenter": {
+      "description": "Technical writer. Creates and updates technical documentation, README files, and API docs.",
+      "mode": "subagent",
+      "model": "ollama/minimax-m2.7:cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "commenter": {
+      "description": "Code commenter. Adds JSDoc, inline comments, and code documentation to improve readability.",
+      "mode": "subagent",
+      "model": "ollama/gemma4:31b-cloud",
+      "tools": {
+        "task": false,
+        "bash": false,
+        "read": true,
+        "write": false,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "devops": {
+      "description": "DevOps engineer. Manages CI/CD pipelines, Docker configurations, deployment scripts, and infrastructure.",
+      "mode": "subagent",
+      "model": "ollama/glm-5.1:cloud",
+      "tools": {
+        "task": false,
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    },
+    "optimizer": {
+      "description": "Performance optimizer. Analyzes and improves code performance, memory usage, and efficiency.",
+      "mode": "subagent",
+      "model": "ollama/deepseek-v3.2:cloud",
+      "tools": {
+        "task": false,
+        "bash": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "list": true,
+        "glob": true,
+        "grep": true,
+        "lsp": true,
+        "webfetch": false,
+        "todowrite": false,
+        "todoread": true
+      }
+    }
+  },
+  "provider": {
+    "ollama": {
+      "options": {
+        "baseURL": "https://cloud.ollama.com/v1",
+        "apiKey": "$OLLAMA_CLOUD_KEY"
+      }
+    }
+  },
+  "lsp": {}
+}
