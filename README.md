@@ -12,6 +12,26 @@
 
 ---
 
+## 📋 Table of Contents
+
+- 🏠 [Overview](#overview) — What is Hermes, compatibility, platforms
+- 🏗️ [Architecture](#architecture) — System diagram and agent groups
+- 🧠 [Model Selection Rationale](#model-selection-rationale) — Why each model was chosen
+- 🤖 [Agents](#agents) — All 17 agents with roles and models
+- 🔄 [Pipelines](#pipelines) — Predefined workflows for common tasks
+- 💰 [Cost Optimization](#cost-optimization) — How models minimize cost per pipeline
+- ⭐ [Key Features](#key-features) — Quality gates, security, checkpoints, learning
+- 📦 [Installation](#installation) — Setup for Hermes Agent and OpenCode AI
+- 🚀 [Usage](#usage) — How to run pipelines and examples
+- ⚙️ [Configuration](#configuration) — Customizing models and providers
+- 📁 [Project Structure](#project-structure) — File layout
+- 📊 [Available Models](#available-models) — All Ollama Cloud models with specs
+- 🔗 [Links](#links) — Hermes Agent, OpenCode AI, Ollama
+- 🤝 [Contributing](#contributing) — How to contribute
+- 📄 [License](#license) — MIT
+
+---
+
 ## Overview
 
 Hermes is a sophisticated multi-agent orchestration system that coordinates 17 specialized AI agents to handle complex software development tasks — from research and planning to implementation, testing, and deployment.
